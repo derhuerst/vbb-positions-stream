@@ -1,0 +1,17 @@
+{
+	"name":         "vbb-positions-stream",
+	"description":  "A realtime stream for positions of buses and trains.",
+	"version":      "0.1.0",
+	"main":         "index.js",
+	"files":        ["index.js"],
+	"keywords":     ["vbb", "bvg", "realtime", "stream", "live", "map"],
+	"author":       "Jannis R <mail@jannisr.de>",
+	"homepage":     "https://github.com/derhuerst/vbb-positions-stream",
+	"repository":   "derhuerst/vbb-positions-stream",
+	"license":      "ISC",
+	"engines":      {"node": ">=4"},
+	"scripts": {
+		"test":       "./test.js",
+		"prepublish": "npm test"
+	}
+}
