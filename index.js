@@ -1,7 +1,37 @@
 'use strict'
 
-const movements = require('./request')
+const stream = require('stream')
+const request = require('./request')
 
-const duration = 60000
-const bbox = [52.544990, 13.347711, 52.558346, 13.367170]
-movements(bbox, {duration})
+
+
+const movements = (bbox, opt) => {
+	let stop, running, duration // of request
+	const out = new stream.Readable({objectMode: true})
+	out._read = () => {if (!running) collect()}
+	out.stop = () => {stop = true}
+
+	const collect = () => {
+		running = true
+		const from = Date.now()
+		request(bbox, opt).then((data) => {
+			duration = Date.now() - from
+			if (stop) return running = false
+			else setTimeout(collect, opt.duration - duration)
+
+			for (let movement of data) {
+				for (let node of movement) out.push({
+					  line: movement.line._
+					, product: movement.product.type
+					, latitude: node.latitude
+					, longitude: node.longitude
+					, when: from + node.t
+				})
+			}
+
+		}, console.error)
+	}
+	return out
+}
+
+module.exports = movements
