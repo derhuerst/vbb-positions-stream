@@ -1,6 +1,8 @@
 # vbb-positions-stream
 
-**Get realtime positions of VBB vehicles** in a certain area.
+**Get realtime positions of VBB vehicles** in a certain area. However the data is really crappy:
+
+![well](wat.png)
 
 [![npm version](https://img.shields.io/npm/v/vbb-positions-stream.svg)](https://www.npmjs.com/package/vbb-positions-stream)
 [![build status](https://img.shields.io/travis/derhuerst/vbb-positions-stream.svg)](https://travis-ci.org/derhuerst/vbb-positions-stream)
