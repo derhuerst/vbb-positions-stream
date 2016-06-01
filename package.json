@@ -13,7 +13,7 @@
 	"dependencies": {
 		"vbb-util": "^0.9.3",
 		"got": "^6.3",
-		"vbb-hafas": "^0.10.2"
+		"vbb-hafas": "^0.11"
 	},
 	"devDependencies": {
 		"is-stream": "^1.1"
