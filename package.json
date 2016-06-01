@@ -10,6 +10,11 @@
 	"repository":   "derhuerst/vbb-positions-stream",
 	"license":      "ISC",
 	"engines":      {"node": ">=4"},
+	"dependencies": {
+		"vbb-util": "^0.9.3",
+		"got": "^6.3",
+		"vbb-hafas": "^0.10.2"
+	},
 	"scripts": {
 		"test":       "./test.js",
 		"prepublish": "npm test"
