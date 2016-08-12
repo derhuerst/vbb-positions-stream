@@ -2,7 +2,7 @@
 
 const util = require('vbb-util')
 const got = require('got')
-const stringify = require('vbb-hafas/lib/stringify')
+const stringify = require('hafas-client/stringify')
 const stream = require('stream')
 
 
