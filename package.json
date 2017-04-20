@@ -13,7 +13,7 @@
 	"dependencies": {
 		"vbb-util": "^0.10",
 		"got": "^6.3",
-		"hafas-client": "^0.6.1"
+		"hafas-client": "^0.7.0"
 	},
 	"devDependencies": {
 		"is-stream": "^1.1"
