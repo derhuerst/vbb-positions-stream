@@ -3,10 +3,15 @@
 
 const a = require('assert')
 const isStream = require('is-stream')
-const positions = require('./index')
+const positions = require('.')
 
 const bbox = [52.544990, 13.347711, 52.558346, 13.367170]
 const p = positions(bbox)
+
+p.once('error', (err) => {
+	console.error(err)
+	process.exit(1)
+})
 
 a.ok(isStream(p))
 p.on('data', (d) => {

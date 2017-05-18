@@ -67,7 +67,7 @@ const request = (bbox, opt) => {
 	.then((res) => {
 		if (!res.body || !Array.isArray(res.body.t)) return []
 		return res.body.t.map(parse)
-	}, (err) => err)
+	})
 }
 
 
@@ -92,11 +92,12 @@ const positions = (bbox, opt) => {
 					, product: movement.product
 					, latitude: node.latitude
 					, longitude: node.longitude
-					, when: from + node.t
+					, when: beginning + node.t
 				})
 			}
 
-		}, console.error)
+		})
+		.catch((err) => out.emit('error', err))
 	}
 	return out
 }
