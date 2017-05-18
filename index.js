@@ -12,8 +12,8 @@ const findLine = /([a-z]{0,3}\d{1,3})/i
 
 const parse = (m) => {
 	const keyframes = m.p ? m.p.map((p) => ({
-		  latitude:  p.x / 1000000
-		, longitude: p.y / 1000000
+		  latitude:  p.y / 1000000
+		, longitude: p.x / 1000000
 		, t: +p.t
 	})) : []
 	keyframes.line = m.n ? parseLine(m.n)._ : null

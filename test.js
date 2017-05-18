@@ -8,6 +8,8 @@ const positions = require('.')
 const bbox = [52.544990, 13.347711, 52.558346, 13.367170]
 const p = positions(bbox)
 
+setTimeout(p.stop, 10 * 1000)
+
 p.once('error', (err) => {
 	console.error(err)
 	process.exit(1)
@@ -20,11 +22,15 @@ p.on('data', (d) => {
 	a.strictEqual(typeof d.when, 'number')
 
 	a.strictEqual(typeof d.latitude, 'number')
-	a.ok(d.latitude > bbox[0])
-	a.ok(d.latitude < bbox[2])
+	if (!(d.latitude > 52.5)) console.error(d.line, d.latitude)
+	a.ok(d.latitude > 52.5)
+	if (!(d.latitude < 52.6)) console.error(d.line, d.latitude)
+	a.ok(d.latitude < 52.6)
 
 	a.strictEqual(typeof d.longitude, 'number')
-	a.ok(d.longitude > bbox[1])
-	a.ok(d.longitude < bbox[3])
+	if (!(d.longitude > 13.3)) console.error(d.line, d.longitude)
+	a.ok(d.longitude > 13.3)
+	if (!(d.longitude < 13.4)) console.error(d.line, d.longitude)
+	a.ok(d.longitude < 13.4)
 })
 
