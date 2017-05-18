@@ -1,5 +1,6 @@
 'use strict'
 
+const parseLine = require('vbb-parse-line')
 const util = require('vbb-util')
 const got = require('got')
 const stringify = require('hafas-client/stringify')
@@ -15,8 +16,9 @@ const parse = (m) => {
 		, longitude: p.y / 1000000
 		, t: +p.t
 	})) : []
-	keyframes.line = findLine.exec(m.n)[1] || null
-	keyframes.product = util.products.bitmasks[parseInt(m.c)].type
+	keyframes.line = m.n ? parseLine(m.n)._ : null
+	const product = util.products.bitmasks[parseInt(m.c)]
+	keyframes.product = product ? product.type : null
 	keyframes.direction = m.l
 	return keyframes
 }
@@ -41,12 +43,6 @@ const defaults = {
 
 // min latitude, min longitude, max latitude, max longitude
 const request = (bbox, opt) => {
-	if (!Array.isArray(bbox) || bbox.length !== 4)
-		throw new Error('invalid bbox array')
-
-	opt = opt || {}
-	const products = Object.assign({}, defaults.products, opt.products)
-
 	return got.post('fahrinfo.vbb.de/bin/query.exe/dny', {
 		json: true,
 		query: {
@@ -60,7 +56,7 @@ const request = (bbox, opt) => {
 				, 'interval',     opt.duration
 				, 'intervalstep', opt.interval
 			].join('|')
-			, look_productclass: util.products.stringifyBitmask(products) + ''
+			, look_productclass: util.products.stringifyBitmask(opt.products) + ''
 			, tpl: 'trains2json2', look_json: 'yes', performLocating: '1'
 		}
 	})
@@ -72,7 +68,13 @@ const request = (bbox, opt) => {
 
 
 
-const positions = (bbox, opt) => {
+const positions = (bbox, opt = {}) => {
+	if (!Array.isArray(bbox) || bbox.length !== 4)
+		throw new Error('invalid bbox array')
+
+	const products = Object.assign({}, defaults.products, opt.products)
+	opt = Object.assign({}, defaults, opt, {products})
+
 	let stop, running, duration // of request
 	const out = new stream.Readable({objectMode: true})
 	out._read = () => {if (!running) collect()}
@@ -80,11 +82,12 @@ const positions = (bbox, opt) => {
 
 	const collect = () => {
 		running = true
-		const from = Date.now()
-		request(bbox, opt).then((data) => {
-			duration = Date.now() - from
+		const beginning = Date.now()
+		request(bbox, opt)
+		.then((data) => {
+			duration = Date.now() - beginning
 			if (stop) return running = false
-			else setTimeout(collect, opt.duration - duration)
+			else setTimeout(collect, Math.max(opt.interval - duration, 0))
 
 			for (let movement of data) {
 				for (let node of movement) out.push({
