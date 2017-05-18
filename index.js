@@ -68,10 +68,11 @@ const request = (bbox, opt) => {
 
 
 
-const positions = (bbox, opt = {}) => {
+const positions = (bbox, opt) => {
 	if (!Array.isArray(bbox) || bbox.length !== 4)
 		throw new Error('invalid bbox array')
 
+	opt = opt || {}
 	const products = Object.assign({}, defaults.products, opt.products)
 	opt = Object.assign({}, defaults, opt, {products})
 
