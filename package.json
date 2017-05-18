@@ -1,7 +1,7 @@
 {
 	"name":         "vbb-positions-stream",
 	"description":  "A realtime stream for positions of buses and trains.",
-	"version":      "0.2.0",
+	"version":      "0.2.1",
 	"main":         "index.js",
 	"files":        ["index.js"],
 	"keywords":     ["vbb", "bvg", "realtime", "stream", "live", "map"],
@@ -12,12 +12,12 @@
 	"engines":      {"node": ">=4"},
 	"dependencies": {
 		"vbb-parse-line": "^0.2.3",
-		"vbb-util": "^0.10",
-		"got": "^6.3",
-		"hafas-client": "^0.7.0"
+		"vbb-util": "^0.10.1",
+		"got": "^6.7.1",
+		"hafas-client": "^1.0.0"
 	},
 	"devDependencies": {
-		"is-stream": "^1.1"
+		"is-stream": "^1.1.0"
 	},
 	"scripts": {
 		"test":       "./test.js",
