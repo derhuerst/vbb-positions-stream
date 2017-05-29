@@ -13,7 +13,7 @@
 	"dependencies": {
 		"vbb-parse-line": "^0.2.3",
 		"vbb-util": "^0.10.1",
-		"got": "^6.7.1",
+		"got": "^7.0.0",
 		"hafas-client": "^1.0.0"
 	},
 	"devDependencies": {
