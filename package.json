@@ -1,15 +1,26 @@
 {
-	"name":         "vbb-positions-stream",
-	"description":  "A realtime stream for positions of buses and trains.",
-	"version":      "0.2.1",
-	"main":         "index.js",
-	"files":        ["index.js"],
-	"keywords":     ["vbb", "bvg", "realtime", "stream", "live", "map"],
-	"author":       "Jannis R <mail@jannisr.de>",
-	"homepage":     "https://github.com/derhuerst/vbb-positions-stream",
-	"repository":   "derhuerst/vbb-positions-stream",
-	"license":      "ISC",
-	"engines":      {"node": ">=4"},
+	"name": "vbb-positions-stream",
+	"description": "A realtime stream for positions of buses and trains.",
+	"version": "0.2.1",
+	"main": "index.js",
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"vbb",
+		"bvg",
+		"realtime",
+		"stream",
+		"live",
+		"map"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/vbb-positions-stream",
+	"repository": "derhuerst/vbb-positions-stream",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
 	"dependencies": {
 		"vbb-parse-line": "^0.2.3",
 		"vbb-util": "^0.10.1",
@@ -20,7 +31,7 @@
 		"is-stream": "^1.1.0"
 	},
 	"scripts": {
-		"test":       "./test.js",
-		"prepublish": "npm test"
+		"test": "./test.js",
+		"prepublishOnly": "npm test"
 	}
 }

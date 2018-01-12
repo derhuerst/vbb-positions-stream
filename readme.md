@@ -6,8 +6,6 @@
 
 [![npm version](https://img.shields.io/npm/v/vbb-positions-stream.svg)](https://www.npmjs.com/package/vbb-positions-stream)
 [![build status](https://img.shields.io/travis/derhuerst/vbb-positions-stream.svg)](https://travis-ci.org/derhuerst/vbb-positions-stream)
-[![dependency status](https://img.shields.io/david/derhuerst/vbb-positions-stream.svg)](https://david-dm.org/derhuerst/vbb-positions-stream)
-[![dev dependency status](https://img.shields.io/david/dev/derhuerst/vbb-positions-stream.svg)](https://david-dm.org/derhuerst/vbb-positions-stream#info=devDependencies)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/vbb-positions-stream.svg)
 [![gitter channel](https://badges.gitter.im/derhuerst/vbb-rest.svg)](https://gitter.im/derhuerst/vbb-rest)
 
