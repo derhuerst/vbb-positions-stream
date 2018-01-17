@@ -18,6 +18,7 @@ p.once('error', (err) => {
 a.ok(isStream(p))
 p.on('data', (d) => {
 	a.strictEqual(typeof d.line, 'string')
+	a.strictEqual(typeof d.mode, 'string')
 	a.strictEqual(typeof d.product, 'string')
 	a.strictEqual(typeof d.when, 'number')
 
