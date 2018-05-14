@@ -5,8 +5,12 @@ const a = require('assert')
 const isStream = require('is-stream')
 const positions = require('.')
 
-const bbox = [52.544990, 13.347711, 52.558346, 13.367170]
-const p = positions(bbox)
+const p = positions({
+	north: 52.558346,
+	west: 13.367170,
+	south: 52.544990,
+	east: 13.347711
+})
 
 setTimeout(p.stop, 10 * 1000)
 

@@ -22,7 +22,7 @@ npm install vbb-positions-stream
 
 ```js
 const positions = require('vbb-positions-stream')
-positions([52.4983, 13.3917, 52.4984, 13.3918])
+positions({north: 52.4984, west: 13.3917, south: 52.4983, east: 13.3918})
 .on('data', console.log)
 ```
 

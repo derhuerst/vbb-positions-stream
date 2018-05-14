@@ -9,6 +9,8 @@ const {fetch} = require('fetch-ponyfill')({Promise})
 const formatCoord = require('hafas-client/format/coord')
 const stream = require('stream')
 
+const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
+
 const formatBitmask = createFormatBitmask(products)
 
 const parse = (m) => {
@@ -50,10 +52,10 @@ const userAgent = 'vbb-positions-stream'
 // min latitude, min longitude, max latitude, max longitude
 const request = (bbox, opt) => {
 	const query = qs.stringify({
-		look_miny: formatCoord(bbox[0]),
-		look_minx: formatCoord(bbox[1]),
-		look_maxy: formatCoord(bbox[2]),
-		look_maxx: formatCoord(bbox[3]),
+		look_miny: formatCoord(bbox.south),
+		look_minx: formatCoord(bbox.west),
+		look_maxy: formatCoord(bbox.north),
+		look_maxx: formatCoord(bbox.east),
 		// todo
 		look_nv: [
 			'zugposmode',   2,
@@ -89,8 +91,13 @@ const request = (bbox, opt) => {
 
 
 const positions = (bbox, opt) => {
-	if (!Array.isArray(bbox) || bbox.length !== 4)
-		throw new Error('invalid bbox array')
+	if (
+		!isObj(bbox) ||
+		'number' !== typeof bbox.north ||
+		'number' !== typeof bbox.west ||
+		'number' !== typeof bbox.south ||
+		'number' !== typeof bbox.east
+	) throw new Error('invalid bbox obj')
 
 	opt = opt || {}
 	const products = Object.assign({}, defaults.products, opt.products)
