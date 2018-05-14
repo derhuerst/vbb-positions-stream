@@ -128,4 +128,5 @@ const positions = (bbox, opt) => {
 	return out
 }
 
+positions.request = request
 module.exports = positions

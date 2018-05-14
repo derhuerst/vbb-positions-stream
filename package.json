@@ -33,7 +33,7 @@
 		"is-stream": "^1.1.0"
 	},
 	"scripts": {
-		"test": "./test.js",
+		"test": "env NODE_ENV=dev ./test.js",
 		"prepublishOnly": "npm test"
 	}
 }
