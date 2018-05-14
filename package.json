@@ -1,7 +1,7 @@
 {
 	"name": "vbb-positions-stream",
 	"description": "A realtime stream for positions of buses and trains.",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"main": "index.js",
 	"files": [
 		"index.js"
@@ -26,8 +26,7 @@
 		"hafas-client": "^2.1.0",
 		"pinkie-promise": "^2.0.1",
 		"query-string": "^6.0.0",
-		"vbb-parse-line": "^0.3.0",
-		"vbb-util": "^0.10.1"
+		"vbb-parse-line": "^0.3.0"
 	},
 	"devDependencies": {
 		"is-stream": "^1.1.0"

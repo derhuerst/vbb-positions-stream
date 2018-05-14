@@ -2,7 +2,6 @@
 
 const createFormatBitmask = require('hafas-client/format/products-bitmask')
 const products = require('hafas-client/p/vbb/modes')
-const util = require('vbb-util')
 const parseLine = require('vbb-parse-line')
 const qs = require('query-string')
 const Promise = require('pinkie-promise')
@@ -61,7 +60,7 @@ const request = (bbox, opt) => {
 			'interval',     opt.duration,
 			'intervalstep', opt.interval
 		].join('|'),
-		look_productclass: util.products.stringifyBitmask(opt.products) + '',
+		look_productclass: formatBitmask(opt.products) + '',
 		tpl: 'trains2json2',
 		look_json: 'yes',
 		performLocating: '1'
