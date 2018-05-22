@@ -1,5 +1,7 @@
 # vbb-positions-stream
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/derhuerst/vbb-positions-stream.svg)](https://greenkeeper.io/)
+
 **Get realtime positions of VBB vehicles** in a certain area. However the data is really crappy:
 
 ![well](wat.png)
