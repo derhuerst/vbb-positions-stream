@@ -104,9 +104,16 @@ const positions = (bbox, opt) => {
 	opt = Object.assign({}, defaults, opt, {products})
 
 	let stop, running, duration // of request
-	const out = new stream.Readable({objectMode: true})
-	out._read = () => {if (!running) collect()}
-	out.stop = () => {stop = true}
+	const out = new stream.Readable({
+		objectMode: true,
+		read: () => {
+			if (!running) collect()
+		},
+		destroy: (err, cb) => {
+			stop = true
+			cb(err)
+		}
+	})
 
 	const collect = () => {
 		running = true

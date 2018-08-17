@@ -12,7 +12,7 @@ const p = positions({
 	east: 13.347711
 })
 
-setTimeout(p.stop, 10 * 1000)
+setTimeout(() => p.destroy(), 10 * 1000)
 
 p.once('error', (err) => {
 	console.error(err)

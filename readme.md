@@ -20,10 +20,22 @@ npm install vbb-positions-stream
 
 ## Usage
 
+`positions` returns a [readable stream](https://nodejs.org/api/stream.html#stream_readable_streams) in [object mode](https://nodejs.org/api/stream.html#stream_object_mode).
+
 ```js
 const positions = require('vbb-positions-stream')
-positions({north: 52.4984, west: 13.3917, south: 52.4983, east: 13.3918})
-.on('data', console.log)
+
+const readable = positions({
+	north: 52.4984,
+	west: 13.3917,
+	south: 52.4983,
+	east: 13.3918
+})
+let i = 0
+readable.on('data', (movement) => {
+	console.log(movement)
+	if (++i >= 5) readable.destroy() // stop receiving positions
+})
 ```
 
 ```js
