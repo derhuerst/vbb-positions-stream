@@ -1,7 +1,7 @@
 'use strict'
 
-const createFormatBitmask = require('hafas-client/format/products-bitmask')
-const products = require('hafas-client/p/vbb/modes')
+const createFormatBitmask = require('hafas-client/format/products-filter')
+const products = require('hafas-client/p/vbb/products')
 const parseLine = require('vbb-parse-line')
 const qs = require('query-string')
 const Promise = require('pinkie-promise')
@@ -11,7 +11,7 @@ const stream = require('stream')
 
 const isObj = o => o !== null && 'object' === typeof o && !Array.isArray(o)
 
-const formatBitmask = createFormatBitmask(products)
+const formatBitmask = createFormatBitmask({products})
 
 const parse = (m) => {
 	if (!m.p) return []
@@ -23,7 +23,7 @@ const parse = (m) => {
 	}))
 
 	const line = m.n && parseLine(m.n) || {}
-	const product = products.bitmasks[parseInt(m.c)]
+	const product = products.find(p => p.bitmasks.some(b => b === parseInt(m.c)))
 
 	keyframes.line = line._ || null
 	keyframes.mode = line.mode || product && product.mode || null
