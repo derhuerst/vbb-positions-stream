@@ -49,6 +49,11 @@ const defaults = {
 
 const userAgent = 'vbb-positions-stream'
 
+let allProducts = 0
+for (const p of products) {
+	for (const b of p.bitmasks) allProducts += b
+}
+
 // min latitude, min longitude, max latitude, max longitude
 const request = (bbox, opt) => {
 	const query = qs.stringify({
@@ -64,6 +69,7 @@ const request = (bbox, opt) => {
 		].join('|'),
 		look_productclass: formatBitmask(opt.products) + '',
 		tpl: 'trains2json2',
+		look_productclass: allProducts + '',
 		look_json: 'yes',
 		performLocating: '1'
 	})
