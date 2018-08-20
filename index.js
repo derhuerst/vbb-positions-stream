@@ -62,9 +62,8 @@ const request = (bbox, opt) => {
 		look_minx: formatCoord(bbox.west),
 		look_maxy: formatCoord(bbox.north),
 		look_maxx: formatCoord(bbox.east),
-		// todo
-		look_nv: [
-			'zugposmode',   2,
+ 		look_nv: [
+			'zugposmode',   2, // todo: what is this?
 			'interval',     opt.duration,
 			'intervalstep', opt.interval
 		].join('|'),

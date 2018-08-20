@@ -1,6 +1,6 @@
 # vbb-positions-stream
 
-**Get realtime positions of VBB vehicles** in a certain area. However the data is really crappy:
+**Get realtime positions of VBB vehicles** in a certain area.
 
 ![well](wat.png)
 
@@ -26,10 +26,10 @@ npm install vbb-positions-stream
 const positions = require('vbb-positions-stream')
 
 const readable = positions({
-	north: 52.4984,
-	west: 13.3917,
-	south: 52.4983,
-	east: 13.3918
+	north: 52.5,
+	west: 13.385,
+	south: 52.495,
+	east: 13.395
 })
 let i = 0
 readable.on('data', (movement) => {
@@ -39,11 +39,51 @@ readable.on('data', (movement) => {
 ```
 
 ```js
-{line:'120', product: 'bus', latitude: 13.360289, longitude: 52.545958, when: 1464789063970}
-{line: '120', product: 'bus', latitude: 13.360271, longitude: 52.545967, when: 1464789064970}
-{line: '50', product: 'bus', latitude: 13.356289, longitude: 52.552673, when: 1464789034970}
-{line: '50', product: 'bus', latitude: 13.356226, longitude: 52.552646, when: 1464789035970}
-{line: '50', product: 'bus', latitude: 13.356172, longitude: 52.552619, when: 1464789036970}
+{
+	tripId: '84/32569/18/21/86',
+	mode: 'train',
+	product: 'subway',
+	latitude: 52.498064,
+	longitude: 13.391617,
+	when: 1534763850777,
+	line: 'U6'
+}
+{
+	tripId: '84/32569/18/21/86',
+	mode: 'train',
+	product: 'subway',
+	latitude: 52.497938,
+	longitude: 13.391581,
+	when: 1534763852777,
+	line: 'U6'
+}
+{
+	tripId: '84/32569/18/21/86',
+	mode: 'train',
+	product: 'subway',
+	latitude: 52.497813,
+	longitude: 13.391545,
+	when: 1534763854777,
+	line: 'U6'
+}
+{
+	tripId: '84/32569/18/21/86',
+	mode: 'train',
+	product: 'subway',
+	latitude: 52.497678,
+	longitude: 13.391509,
+	when: 1534763856777,
+	line: 'U6'
+}
+{
+	tripId: '84/32569/18/21/86',
+	mode: 'train',
+	product: 'subway',
+	latitude: 52.497552,
+	longitude: 13.391473,
+	when: 1534763858777,
+	line: 'U6'
+}
 ```
 
 
