@@ -21,10 +21,11 @@ p.once('error', (err) => {
 
 a.ok(isStream(p))
 p.on('data', (d) => {
-	a.strictEqual(typeof d.line, 'string')
+	a.strictEqual(typeof d.tripId, 'string')
 	a.strictEqual(typeof d.mode, 'string')
 	a.strictEqual(typeof d.product, 'string')
 	a.strictEqual(typeof d.when, 'number')
+	a.strictEqual(typeof d.line, 'string')
 
 	a.strictEqual(typeof d.latitude, 'number')
 	if (!(d.latitude > 52.5)) console.error(d.line, d.latitude)

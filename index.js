@@ -25,6 +25,7 @@ const parse = (m) => {
 	const line = m.n && parseLine(m.n) || {}
 	const product = products.find(p => p.bitmasks.some(b => b === parseInt(m.c)))
 
+	keyframes.tripId = m.i
 	keyframes.line = line._ || null
 	keyframes.mode = line.mode || product && product.mode || null
 	keyframes.product = line.product || product && product.product || null
@@ -132,12 +133,13 @@ const positions = (bbox, opt) => {
 
 			for (let movement of data) {
 				for (let node of movement) out.push({
-					  line: movement.line
+					  tripId: movement.tripId
 					, mode: movement.mode
 					, product: movement.product
 					, latitude: node.latitude
 					, longitude: node.longitude
 					, when: beginning + node.t
+					, line: movement.line
 				})
 			}
 
