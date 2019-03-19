@@ -23,7 +23,7 @@
 	},
 	"dependencies": {
 		"fetch-ponyfill": "^6.0.0",
-		"hafas-client": "^3.0.0",
+		"hafas-client": "^4.0.1",
 		"pinkie-promise": "^2.0.1",
 		"query-string": "^6.0.0",
 		"vbb-parse-line": "^0.3.0"
