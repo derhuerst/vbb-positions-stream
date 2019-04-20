@@ -29,7 +29,7 @@
 		"vbb-parse-line": "^0.3.0"
 	},
 	"devDependencies": {
-		"is-stream": "^1.1.0"
+		"is-stream": "^2.0.0"
 	},
 	"scripts": {
 		"test": "env NODE_ENV=dev ./test.js",
